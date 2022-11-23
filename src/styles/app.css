@@ -5,7 +5,7 @@
     width: 400px;
 }
 
-button{
+.chooseWord{
     position: absolute;
     top: 70px;
     right: 20%;
@@ -26,5 +26,33 @@ h3{
     font-size: 50px;
     font-weight: 700;
     letter-spacing: 15px;
+}
+
+
+.tecradinhu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 28%;
+    position: absolute;
+    bottom: 21%;
+}
+
+.tecradinhu button{
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    padding: 15px 25px;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+    color: #7AA7C7;
+    background-color: #E1ECF4;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
 }
 

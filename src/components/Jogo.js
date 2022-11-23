@@ -12,7 +12,7 @@ const Jogo = () => {
       <div className="jogobox">
         <img className="forca" src={Forca0} alt="Imagem da Forca" />
 
-        <button>Escolher Palavra</button>
+        <button className="chooseWord">Escolher Palavra</button>
         <h3>______</h3>
       </div>
     </>
