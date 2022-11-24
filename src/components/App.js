@@ -16,7 +16,7 @@ import { useState } from "react";
 
 function App() {
   const [forca, setForca] = useState(Forca0);
-  const [enabled, setEnabled] = useState("disabled");
+  const [enabled, setEnabled] = useState(true);
   return (
     <>
       <Jogo forca={forca} />

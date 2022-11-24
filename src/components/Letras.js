@@ -29,9 +29,9 @@ const Letras = ({ enabled, setEnabled }) => {
   ];
 
   return (
-    <div className={`tecradinhu`}>
+    <div className={`tecradinhu `}>
       {alfabeto.map((letras, index) => (
-        <button disabled key={index}>
+        <button data-test="letter" disabled key={index}>
           {letras}
         </button>
       ))}
