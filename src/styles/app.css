@@ -7,7 +7,7 @@
 
 .chooseWord{
     position: absolute;
-    top: 70px;
+    top: 90px;
     right: 20%;
     padding: 20px 50px;
     background-color: #27AE60;
@@ -42,7 +42,7 @@ h3{
     bottom: 21%;
 }
 
-.tecradinhu button{
+.tecradinhu button, .chuteBox button{
     display: flex;
     justify-content: center;
     width: 40px;
@@ -54,5 +54,34 @@ h3{
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+}
+
+.chuteBox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    position: absolute;
+    bottom: 15%;
+}
+
+.chuteBox h4{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.chuteBox input {
+    font-size: 30px;
+    width: 353px;
+    height: 40px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.chuteBox button{
+    width: 100px;
+    height: 40px;
+    align-items: center;
 }
 

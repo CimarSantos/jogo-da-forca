@@ -1,0 +1,11 @@
+const Chute = () => {
+  return (
+    <div className="chuteBox">
+      <h4>Já sei a palavra!</h4>
+      <input type="text" />
+      <button>Chutar</button>
+    </div>
+  );
+};
+
+export default Chute;
