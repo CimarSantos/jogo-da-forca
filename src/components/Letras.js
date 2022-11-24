@@ -1,4 +1,4 @@
-const Letras = () => {
+const Letras = ({ enabled, setEnabled }) => {
   const alfabeto = [
     "A",
     "B",
@@ -29,9 +29,11 @@ const Letras = () => {
   ];
 
   return (
-    <div className="tecradinhu">
+    <div className={`tecradinhu`}>
       {alfabeto.map((letras, index) => (
-        <button key={index}>{letras}</button>
+        <button disabled key={index}>
+          {letras}
+        </button>
       ))}
     </div>
   );
