@@ -1,16 +1,24 @@
 import styled from "styled-components";
 
+import palavras from "../palavras";
+
+let random = [];
+
 const Jogo = ({ enabled, setEnabled, forca, setForca }) => {
-  console.log(forca);
+  function randomWord() {
+    setEnabled(false);
+    random = palavras[Math.floor(Math.random() * palavras.length)].split("");
+  }
+  console.log(random);
   return (
     <>
       <Jogobox>
         <Forca src={forca} alt="Imagem da Forca" />
 
-        <Chooseword data-test="choose-word" onClick={() => setEnabled(false)}>
+        <Chooseword data-test="choose-word" onClick={randomWord}>
           Escolher Palavra
         </Chooseword>
-        <h3>______</h3>
+        <h3 data-test="word">{random}</h3>
       </Jogobox>
     </>
   );

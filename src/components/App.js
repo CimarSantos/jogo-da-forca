@@ -5,6 +5,7 @@ import Jogo from "./Jogo";
 import Letras from "./Letras";
 import Chute from "./Chute";
 
+
 import Forca0 from "../assets/forca0.png";
 import Forca1 from "../assets/forca1.png";
 import Forca2 from "../assets/forca2.png";
@@ -16,6 +17,7 @@ import Forca6 from "../assets/forca6.png";
 function App() {
   const [forca, setForca] = useState(Forca0);
   const [enabled, setEnabled] = useState(true);
+  
   return (
     <>
       <GlobalStyle />
