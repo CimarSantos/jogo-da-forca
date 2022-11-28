@@ -34,7 +34,7 @@ const Letras = ({ enabled, setEnabled }) => {
     <Tecradinhu>
       {alfabeto.map((letras, index) => (
         <button data-test="letter" key={index} disabled={enabled}>
-          {letras}
+          {letras.toLowerCase()}
         </button>
       ))}
     </Tecradinhu>
