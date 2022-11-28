@@ -18,9 +18,7 @@ function App() {
   const [forca, setForca] = useState(Forca0);
   const [enabled, setEnabled] = useState(true);
   const [palavraChute, setPalavraChute] = useState("");
-  const [wrongClicks, setWrongClicks] = useState(0);
-  const [random, setRandom] = useState("");
-  console.log(forca);
+  const [random, setRandom] = useState([]);
 
   function randomWord() {
     setEnabled(false);
@@ -35,8 +33,6 @@ function App() {
         setForca={setForca}
         enabled={enabled}
         setEnabled={setEnabled}
-        wrongClicks={wrongClicks}
-        setWrongClicks={setWrongClicks}
         randomWord={randomWord}
         random={random}
         setRandom={setRandom}

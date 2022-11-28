@@ -10,10 +10,12 @@ const Chute = ({
   random,
 }) => {
   function VaiChute() {
-    if (random.toString() === setPalavraChute) {
-      console.log("Deu");
+    if (random.join("") === palavraChute) {
+      console.log("Ganhou");
+      setEnabled(true);
     } else {
-      console.log("Não deu");
+      console.log("Perdeu");
+      setEnabled(true);
     }
     setPalavraChute("");
   }
@@ -28,7 +30,7 @@ const Chute = ({
         onChange={(e) => setPalavraChute(e.target.value)}
         disabled={enabled}
       />
-      <button onClick={VaiChute} disabled={enabled}>
+      <button data-test="guess-button" onClick={VaiChute} disabled={enabled}>
         Chutar
       </button>
     </Chutebox>
