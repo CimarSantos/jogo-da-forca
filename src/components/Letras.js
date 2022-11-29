@@ -1,40 +1,17 @@
 import styled from "styled-components";
 
-const Letras = ({ enabled, setEnabled }) => {
-  const alfabeto = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+import alfabeto from "../alfabeto";
 
+const Letras = ({ usedLetters }) => {
   return (
     <Tecradinhu>
-      {alfabeto.map((letras, index) => (
-        <button data-test="letter" key={index} disabled={enabled}>
-          {letras.toLowerCase()}
+      {alfabeto.map((letra, index) => (
+        <button
+          data-test="letter"
+          key={index}
+          disabled={usedLetters.includes(letra)}
+        >
+          {letra}
         </button>
       ))}
     </Tecradinhu>

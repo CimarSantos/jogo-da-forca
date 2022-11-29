@@ -5,46 +5,51 @@ import Jogo from "./Jogo";
 import Letras from "./Letras";
 import Chute from "./Chute";
 import palavras from "../palavras";
-
-import Forca0 from "../assets/forca0.png";
-import Forca1 from "../assets/forca1.png";
-import Forca2 from "../assets/forca2.png";
-import Forca3 from "../assets/forca3.png";
-import Forca4 from "../assets/forca4.png";
-import Forca5 from "../assets/forca5.png";
-import Forca6 from "../assets/forca6.png";
+import alfabeto from "../alfabeto";
 
 function App() {
-  const [forca, setForca] = useState(Forca0);
+  const [numberErrors, setNumberErrors] = useState(0);
   const [enabled, setEnabled] = useState(true);
   const [palavraChute, setPalavraChute] = useState("");
-  const [random, setRandom] = useState([]);
+  const [randomWord, setRandomWord] = useState([]);
+  const [usedLetters, setUsedLetters] = useState(alfabeto);
+  const [sortWord, setSortWord] = useState([]);
 
-  function randomWord() {
+  function startGame() {
     setEnabled(false);
-    setRandom(palavras[Math.floor(Math.random() * palavras.length)].split(""));
+    setUsedLetters([]);
+    sortRandomWord();
+  }
+
+  function sortRandomWord() {
+    const i = Math.floor(Math.random() * palavras.length);
+    const palavra = palavras[i];
+    const arrayWord = palavra.split("");
+    setSortWord(palavra);
+
+    let wordTraces = [];
+    arrayWord.forEach(() => wordTraces.push(" _"));
+    setRandomWord(wordTraces);
   }
 
   return (
     <>
       <GlobalStyle />
       <Jogo
-        forca={forca}
-        setForca={setForca}
+        numberErrors={numberErrors}
+        startGame={startGame}
+        randomWord={randomWord}
+        sortWord={sortWord}
+      />
+      <Letras
         enabled={enabled}
         setEnabled={setEnabled}
-        randomWord={randomWord}
-        random={random}
-        setRandom={setRandom}
+        usedLetters={usedLetters}
       />
-      <Letras enabled={enabled} setEnabled={setEnabled} />
       <Chute
         enabled={enabled}
-        setEnabled={setEnabled}
         palavraChute={palavraChute}
-        setPalavraChute={setPalavraChute}
-        random={random}
-        setRandom={setRandom}
+        randomWord={randomWord}
       />
     </>
   );

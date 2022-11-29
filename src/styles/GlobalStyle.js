@@ -11,6 +11,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
 }
 
+.preto {
+    color: black;
+}
+
+.vermelho{
+    color: red;
+}
+
+.verde{
+    color: green;
+}
+
 html,
 body,
 div,
