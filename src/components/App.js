@@ -8,28 +8,47 @@ import palavras from "../palavras";
 import alfabeto from "../alfabeto";
 
 function App() {
-  const [numberErrors, setNumberErrors] = useState(0);
-  const [enabled, setEnabled] = useState(true);
-  const [palavraChute, setPalavraChute] = useState("");
-  const [randomWord, setRandomWord] = useState([]);
-  const [usedLetters, setUsedLetters] = useState(alfabeto);
-  const [sortWord, setSortWord] = useState([]);
+  const [desabilitarInput, setDesabilitarInput] = useState(true); // Habilita o input e botão de chute
+  const [letrasUsadas, setLetrasUsadas] = useState(alfabeto); // Letras que vão ficar desabilitadas
+  const [numberErrors, setNumberErrors] = useState(0); // Quantidade de erros
+  const [palavraEscolhida, setPalavraEscolhida] = useState([]); // Palavra que foi sorteada
+  const [palavraJogo, setPalavraJogo] = useState([]); // Palavra que está sendo adivinhada
+  const [palavraChute, setPalavraChute] = useState(""); // Input controlado do chute
 
   function startGame() {
-    setEnabled(false);
-    setUsedLetters([]);
-    sortRandomWord();
+    setDesabilitarInput(false);
+    setLetrasUsadas([]);
+    sortearPalavra();
   }
 
-  function sortRandomWord() {
+  function sortearPalavra() {
     const i = Math.floor(Math.random() * palavras.length);
     const palavra = palavras[i];
-    const arrayWord = palavra.split("");
-    setSortWord(palavra);
+    const palavraArray = palavra.split("");
+    setPalavraEscolhida(palavraArray);
+    console.log(palavra);
 
-    let wordTraces = [];
-    arrayWord.forEach(() => wordTraces.push(" _"));
-    setRandomWord(wordTraces);
+    let tracinhos = [];
+    palavraArray.forEach(() => tracinhos.push(" _"));
+    setPalavraJogo(tracinhos);
+  }
+
+  function clicarLetra(letraClicada) {
+    setLetrasUsadas([...letrasUsadas, letraClicada]);
+    if (palavraEscolhida.includes(letraClicada)) {
+      acertouLetra(letraClicada);
+    }
+  }
+
+  function acertouLetra(letraClicada) {
+    const novaPalavraJogo = [...palavraJogo];
+
+    palavraEscolhida.forEach((letraEscolhida, i) => {
+      if (palavraEscolhida[i] === letraClicada) {
+        novaPalavraJogo[i] = letraEscolhida;
+      }
+    });
+    setPalavraJogo(novaPalavraJogo);
   }
 
   return (
@@ -38,18 +57,14 @@ function App() {
       <Jogo
         numberErrors={numberErrors}
         startGame={startGame}
-        randomWord={randomWord}
-        sortWord={sortWord}
+        palavraJogo={palavraJogo}
+        palavraEscolhida={palavraEscolhida}
       />
-      <Letras
-        enabled={enabled}
-        setEnabled={setEnabled}
-        usedLetters={usedLetters}
-      />
+      <Letras letrasUsadas={letrasUsadas} clicarLetra={clicarLetra} />
       <Chute
-        enabled={enabled}
+        desabilitarInput={desabilitarInput}
         palavraChute={palavraChute}
-        randomWord={randomWord}
+        palavraJogo={palavraJogo}
       />
     </>
   );

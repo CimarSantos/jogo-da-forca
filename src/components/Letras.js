@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 import alfabeto from "../alfabeto";
 
-const Letras = ({ usedLetters }) => {
+const Letras = ({ letrasUsadas, clicarLetra }) => {
   return (
     <Tecradinhu>
       {alfabeto.map((letra, index) => (
         <button
           data-test="letter"
           key={index}
-          disabled={usedLetters.includes(letra)}
+          disabled={letrasUsadas.includes(letra)}
+          onClick={() => clicarLetra(letra)}
         >
           {letra}
         </button>
