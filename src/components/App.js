@@ -37,6 +37,8 @@ function App() {
     setLetrasUsadas([...letrasUsadas, letraClicada]);
     if (palavraEscolhida.includes(letraClicada)) {
       acertouLetra(letraClicada);
+    } else {
+      errouLetra(letraClicada);
     }
   }
 
@@ -49,6 +51,11 @@ function App() {
       }
     });
     setPalavraJogo(novaPalavraJogo);
+  }
+
+  function errouLetra(letraClicada) {
+    const novosErros = numberErrors + 1;
+    setNumberErrors(novosErros);
   }
 
   return (
