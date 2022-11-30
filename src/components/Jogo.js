@@ -9,7 +9,7 @@ import forca4 from "../assets/forca4.png";
 import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 
-const Jogo = ({ random, startGame, numberErrors, palavraJogo }) => {
+const Jogo = ({ random, startGame, numberErrors, palavraJogo, corPalavra }) => {
   const forcaNumber = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
   return (
     <>
@@ -18,7 +18,9 @@ const Jogo = ({ random, startGame, numberErrors, palavraJogo }) => {
         <Chooseword data-test="choose-word" onClick={startGame}>
           Escolher Palavra
         </Chooseword>
-        <h3 data-test="word">{palavraJogo}</h3>
+        <h3 data-test="word" className={corPalavra}>
+          {palavraJogo}
+        </h3>
       </Jogobox>
     </>
   );

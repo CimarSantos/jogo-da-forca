@@ -14,11 +14,14 @@ function App() {
   const [palavraEscolhida, setPalavraEscolhida] = useState([]); // Palavra que foi sorteada
   const [palavraJogo, setPalavraJogo] = useState([]); // Palavra que está sendo adivinhada
   const [palavraChute, setPalavraChute] = useState(""); // Input controlado do chute
+  const [corPalavra, setCorPalavra] = useState("preto"); // Cor que a palavra aparece na tela
 
   function startGame() {
     setDesabilitarInput(false);
     setLetrasUsadas([]);
     sortearPalavra();
+    setNumberErrors(0);
+    setCorPalavra("preto");
   }
 
   function sortearPalavra() {
@@ -38,7 +41,7 @@ function App() {
     if (palavraEscolhida.includes(letraClicada)) {
       acertouLetra(letraClicada);
     } else {
-      errouLetra(letraClicada);
+      errouLetra();
     }
   }
 
@@ -51,11 +54,26 @@ function App() {
       }
     });
     setPalavraJogo(novaPalavraJogo);
+
+    if (!novaPalavraJogo.includes(" _")) {
+      setCorPalavra("verde");
+      jogoFinalizado();
+    }
   }
 
-  function errouLetra(letraClicada) {
+  function errouLetra() {
     const novosErros = numberErrors + 1;
     setNumberErrors(novosErros);
+    if (novosErros === 6) {
+      setCorPalavra("vermelho");
+      setPalavraJogo(palavraEscolhida);
+      jogoFinalizado();
+    }
+  }
+
+  function jogoFinalizado() {
+    setLetrasUsadas(alfabeto);
+    setDesabilitarInput(true);
   }
 
   return (
@@ -66,6 +84,7 @@ function App() {
         startGame={startGame}
         palavraJogo={palavraJogo}
         palavraEscolhida={palavraEscolhida}
+        corPalavra={corPalavra}
       />
       <Letras letrasUsadas={letrasUsadas} clicarLetra={clicarLetra} />
       <Chute
