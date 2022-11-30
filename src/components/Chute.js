@@ -2,16 +2,12 @@ import styled from "styled-components";
 
 import "./Jogo";
 
-const Chute = ({ desabilitarInput, palavraChute, setPalavraChute, random }) => {
-  function VaiChute() {
-    if (random.join("") === palavraChute) {
-      console.log("Ganhou");
-    } else {
-      console.log("Perdeu");
-    }
-    setPalavraChute("");
-  }
-
+const Chute = ({
+  desabilitarInput,
+  palavraChute,
+  setPalavraChute,
+  chutarPalavraInteira,
+}) => {
   return (
     <Chutebox>
       <h4>Já sei a palavra!</h4>
@@ -24,7 +20,7 @@ const Chute = ({ desabilitarInput, palavraChute, setPalavraChute, random }) => {
       />
       <button
         data-test="guess-button"
-        onClick={VaiChute}
+        onClick={chutarPalavraInteira}
         disabled={desabilitarInput}
       >
         Chutar

@@ -13,8 +13,9 @@ function App() {
   const [numberErrors, setNumberErrors] = useState(0); // Quantidade de erros
   const [palavraEscolhida, setPalavraEscolhida] = useState([]); // Palavra que foi sorteada
   const [palavraJogo, setPalavraJogo] = useState([]); // Palavra que está sendo adivinhada
-  const [palavraChute, setPalavraChute] = useState(""); // Input controlado do chute
+
   const [corPalavra, setCorPalavra] = useState("preto"); // Cor que a palavra aparece na tela
+  const [palavraChute, setPalavraChute] = useState(""); // Input controlado do chute
 
   function startGame() {
     setDesabilitarInput(false);
@@ -76,6 +77,22 @@ function App() {
     setDesabilitarInput(true);
   }
 
+  function chutarPalavraInteira() {
+    let palavraEscolhidaString = "";
+    palavraEscolhida.forEach((letra) => (palavraEscolhidaString += letra));
+
+    if (palavraChute === palavraEscolhidaString) {
+      jogoFinalizado();
+      setPalavraJogo(palavraEscolhida);
+      setCorPalavra("verde");
+    } else {
+      jogoFinalizado();
+      setPalavraJogo(palavraEscolhida);
+      setCorPalavra("vermelho");
+      setNumberErrors(6);
+    }
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -90,7 +107,9 @@ function App() {
       <Chute
         desabilitarInput={desabilitarInput}
         palavraChute={palavraChute}
+        setPalavraChute={setPalavraChute}
         palavraJogo={palavraJogo}
+        chutarPalavraInteira={chutarPalavraInteira}
       />
     </>
   );

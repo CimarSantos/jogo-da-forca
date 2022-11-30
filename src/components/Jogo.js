@@ -9,7 +9,7 @@ import forca4 from "../assets/forca4.png";
 import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 
-const Jogo = ({ random, startGame, numberErrors, palavraJogo, corPalavra }) => {
+const Jogo = ({ startGame, numberErrors, palavraJogo, corPalavra }) => {
   const forcaNumber = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
   return (
     <>
