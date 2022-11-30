@@ -13,7 +13,6 @@ function App() {
   const [numberErrors, setNumberErrors] = useState(0); // Quantidade de erros
   const [palavraEscolhida, setPalavraEscolhida] = useState([]); // Palavra que foi sorteada
   const [palavraJogo, setPalavraJogo] = useState([]); // Palavra que está sendo adivinhada
-
   const [corPalavra, setCorPalavra] = useState("preto"); // Cor que a palavra aparece na tela
   const [palavraChute, setPalavraChute] = useState(""); // Input controlado do chute
 
@@ -82,15 +81,14 @@ function App() {
     palavraEscolhida.forEach((letra) => (palavraEscolhidaString += letra));
 
     if (palavraChute === palavraEscolhidaString) {
-      jogoFinalizado();
       setPalavraJogo(palavraEscolhida);
       setCorPalavra("verde");
     } else {
-      jogoFinalizado();
       setPalavraJogo(palavraEscolhida);
       setCorPalavra("vermelho");
       setNumberErrors(6);
     }
+    jogoFinalizado();
   }
 
   return (
